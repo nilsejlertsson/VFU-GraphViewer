@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import extfx.scene.chart.DateAxis?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testfx.FXMLDocumentController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Start">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open File" />
+                  <MenuItem mnemonicParsing="false" text="Read from database" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+            </items>
+          </Menu>
+            <Menu fx:id="openFile1" mnemonicParsing="false" onAction="#openFile" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="136.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <CheckBox fx:id="c8" disable="true" layoutX="156.0" layoutY="97.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 8" />
+            <CheckBox fx:id="c7" disable="true" layoutX="156.0" layoutY="69.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 7" />
+            <CheckBox fx:id="c6" disable="true" layoutX="156.0" layoutY="15.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 6" />
+            <CheckBox fx:id="c5" disable="true" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 5" />
+            <CheckBox fx:id="c4" disable="true" layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 4" />
+            <CheckBox fx:id="c3" disable="true" layoutX="14.0" layoutY="69.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 3" />
+            <CheckBox fx:id="c2" disable="true" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 2" />
+            <CheckBox fx:id="c1" disable="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCheckButton" text="Channel 1" />
+            <ColorPicker fx:id="colorPicker8" disable="true" layoutX="243.0" layoutY="96.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker7" disable="true" layoutX="243.0" layoutY="68.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker6" disable="true" layoutX="243.0" layoutY="14.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker5" disable="true" layoutX="243.0" layoutY="42.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker4" disable="true" layoutX="95.0" layoutY="96.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker3" disable="true" layoutX="95.0" layoutY="68.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker2" disable="true" layoutX="95.0" layoutY="42.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <ColorPicker fx:id="colorPicker1" disable="true" layoutX="95.0" layoutY="14.0" onAction="#setColor" prefHeight="20.0" prefWidth="45.0" />
+            <Button fx:id="resetButton" layoutX="468.0" layoutY="102.0" mnemonicParsing="false" text="Reset" />
+            <Button fx:id="zoomButton" layoutX="407.0" layoutY="102.0" mnemonicParsing="false" text="Zoom" />
+            <RadioButton layoutX="631.0" layoutY="35.0" mnemonicParsing="false" text="Sample" />
+            <RadioButton layoutX="632.0" layoutY="61.0" mnemonicParsing="false" selected="true" text="Time" />
+            <Button fx:id="setScale" disable="true" layoutX="348.0" layoutY="102.0" mnemonicParsing="false" text="Scale" />
+            <RadioButton fx:id="manualScale" layoutX="355.0" layoutY="13.0" mnemonicParsing="false" onAction="#onSetScale" text="Manual scale" />
+            <Label layoutX="631.0" layoutY="7.0" text="Misc options" />
+            <MenuButton fx:id="menuButton" layoutX="669.0" layoutY="102.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Main Channel">
+               <items>
+                  <MenuItem fx:id="mc1" mnemonicParsing="false" text="Channel 1" />
+                  <MenuItem fx:id="mc2" mnemonicParsing="false" text="Channel 2" />
+                  <MenuItem fx:id="mc3" mnemonicParsing="false" text="Channel 3" />
+                  <MenuItem fx:id="mc4" mnemonicParsing="false" text="Channel 4" />
+                  <MenuItem fx:id="mc5" mnemonicParsing="false" text="Channel 5" />
+                  <MenuItem fx:id="mc6" mnemonicParsing="false" text="Channel 6" />
+                  <MenuItem fx:id="mc7" mnemonicParsing="false" text="Channel 7" />
+                  <MenuItem fx:id="mc8" mnemonicParsing="false" text="Channel 8" />
+               </items>
+            </MenuButton>
+            <TextField fx:id="ystop" layoutX="453.0" layoutY="72.0" prefHeight="25.0" prefWidth="52.0" />
+            <TextField fx:id="ystart" layoutX="355.0" layoutY="38.0" prefHeight="25.0" prefWidth="52.0" />
+            <Label layoutX="414.0" layoutY="76.0" text="y stop" />
+            <Label layoutX="315.0" layoutY="76.0" text="y start" />
+            <TextField layoutX="453.0" layoutY="38.0" prefHeight="25.0" prefWidth="52.0" fx:id="xstop" />
+            <Label layoutX="414.0" layoutY="42.0" text="x stop" />
+            <TextField layoutX="355.0" layoutY="72.0" prefHeight="25.0" prefWidth="52.0" fx:id="xstart" />
+            <Label layoutX="315.0" layoutY="42.0" text="x start" />
+            <Separator prefWidth="800.0" />
+            <Separator layoutX="798.0" orientation="VERTICAL" prefHeight="136.0" />
+            <Separator layoutX="301.0" orientation="VERTICAL" prefHeight="136.0" />
+            <Separator layoutX="553.0" orientation="VERTICAL" prefHeight="136.0" />
+         </children></AnchorPane>
+   </bottom>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <LineChart fx:id="lineChart" animated="false" legendVisible="false">
+              <xAxis>
+                <DateAxis fx:id="dAxis" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxis" side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Rectangle fx:id="zoomRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
