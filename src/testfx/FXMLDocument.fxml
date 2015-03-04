@@ -17,7 +17,7 @@
           <Menu mnemonicParsing="false" text="Start">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open File" />
-                  <MenuItem mnemonicParsing="false" text="Read from database" />
+                  <MenuItem mnemonicParsing="false" onAction="#openDatabase" text="Read from database" />
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
             </items>
           </Menu>

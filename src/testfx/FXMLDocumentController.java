@@ -41,6 +41,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import org.controlsfx.dialog.Dialogs;
+import testfx.database.Database;
+import testfx.model.Sensor;
 
 /**
  *
@@ -191,16 +193,14 @@ public class FXMLDocumentController implements Initializable {
 //                System.out.println("gay");
 //            }
 //        });
-        
 
-        
         zoomRect.setFill(Color.web("blue", 0.1));
         zoomRect.setStroke(Color.BLUE);
         zoomRect.setStrokeDashOffset(50);
 
         zoomRect.widthProperty().bind(rectX.subtract(rectinitX));
         zoomRect.heightProperty().bind(rectY.subtract(rectinitY));
-       
+
     }
 
     private static double getSceneShiftX(Node node) {
@@ -254,7 +254,7 @@ public class FXMLDocumentController implements Initializable {
                     yaxisShift = axisShift;
                     System.out.println("yAxisUPPER:" + yAxis1.getUpperBound() + "yAxisLOWER:" + yAxis1.getLowerBound());
                     newUpperBound = yAxis1.getUpperBound() - ((rectinitY.getValue() - axisShift) / Tgap);
-                    newLowerBound = yAxis1.getUpperBound() - ((rectY.getValue()- axisShift) / Tgap);
+                    newLowerBound = yAxis1.getUpperBound() - ((rectY.getValue() - axisShift) / Tgap);
                     if (newUpperBound > yAxis1.getUpperBound()) {
                         newUpperBound = yAxis1.getUpperBound();
                     }
@@ -286,7 +286,6 @@ public class FXMLDocumentController implements Initializable {
         lineChart2 = lineChart;
         //yAxis.setAutoRanging(false);
         yAxis = new NumberAxis();
-        
 
         series1 = new XYChart.Series();
         series2 = new XYChart.Series();
@@ -663,5 +662,14 @@ public class FXMLDocumentController implements Initializable {
         seriesColors.add(Color.web(CHART_SERIES_DEFAULT_COLOR_7_FX8));
     }
     // </editor-fold>
+
+    @FXML
+    private void openDatabase(ActionEvent event) {
+        Database db = new Database("root", "root", "localhost", "3306", "myDb", "val");
+        testFX.setSensorData(db.getValues());
+        enableCheckboxes();
+        initChartLines();
+
+    }
 
 }
